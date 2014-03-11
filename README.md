@@ -4,6 +4,7 @@ Simple Sublime Text 2/3 plugin for SSH and local syncing.
 
 ## Before you start
 
+- Added support for Windows
 - Currently support MacOS and Linux.
 - SSH synchronization is done via scp, your system must have SSH public-key authentication enabled.
 
@@ -53,6 +54,14 @@ Sample settings:
   }]
 }
 ```
+Sample settings for windows
+{
+  "sync": [ {
+    "type"     : "local",
+    "local"    : "D:\\SourceDirectory\\",
+    "remote"   : "D:\\TargetDirectory"
+  }]
+}
 
 Files are saved to remote server automatically when you save them locally. In case of "local" syncing, they are copied to "remote" folder which is on the same machine.
 
@@ -60,6 +69,7 @@ Files are saved to remote server automatically when you save them locally. In ca
 
 * [tnhu](https://github.com/tnhu)
 * [gfreezy](https://github.com/gfreezy)
+* [mhussain001](https://github.com/mhussain001)
 
 ## License
 

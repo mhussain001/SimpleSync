@@ -14,6 +14,7 @@ import sublime
 import sublime_plugin
 import subprocess
 import threading
+import shutil
 
 #
 # Run a process
@@ -51,6 +52,8 @@ def getSyncItem(local_file):
 #
 # ScpCopier does actual copying using threading to avoid UI blocking
 #
+
+
 class ScpCopier(threading.Thread):
   def __init__(self, host, username, local_file, remote_file, port=22):
     self.host        = host
@@ -77,12 +80,13 @@ class LocalCopier(threading.Thread):
     self.local_file  = local_file
     self.remote_file = remote_file
     threading.Thread.__init__(self)
-
   def run(self):
     print("SimpleSync: ", self.local_file, " -> ", self.remote_file)
+    shutil.copyfile(self.local_file, self.remote_file)
 
-    for line in runProcess(['cp', self.local_file, self.remote_file]):
-      print(line, end='')
+   
+#    for line in runProcess(['cp', self.local_file, self.remote_file]):
+#      print(line, end='')
 
 #
 # Subclass sublime_plugin.EventListener
